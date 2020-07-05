@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
     return Provider(
       create: (context) => FormBloc(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
         title: 'Question 4',
         theme: ThemeData(
           primarySwatch: Colors.blue,

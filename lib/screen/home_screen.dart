@@ -16,11 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
     final bloc = Provider.of<FormBloc>(context);
 
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.deepPurple,
-      appBar: AppBar(title: Text("Question 4 Solution")),
-      body: Container(margin: EdgeInsets.all(24), child: myForm(bloc)),
-    ));
+          backgroundColor: Colors.deepPurple,
+          appBar: AppBar(title: Text("Question 4 Solution")),
+          body: Container(margin: EdgeInsets.all(24), child: myForm(bloc)),
+        ));
   }
 
   Widget myForm(FormBloc bloc) {
