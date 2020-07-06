@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:string_validator/string_validator.dart';
+
 class ValidationMixin {
   final emailTransformer = StreamTransformer<String, String>.fromHandlers(
     handleData: (email, sink) {
@@ -38,17 +40,24 @@ class ValidationMixin {
   );
   final nameTransformer = StreamTransformer<String, String>.fromHandlers(
     handleData: (name, sink) {
-      if (name.length > 4) {
-        sink.add(name);
+      if (isNumeric(name)) {
+        sink.addError("Numeric value is not allowed in the name field");
       } else {
-        sink.addError("Name must be at least 5 charactes long");
+        sink.add(name);
       }
+      // if (name.length > 4) {
+      //   sink.add(name);
+      // } else {
+      //   sink.addError("Name must be at least 5 charactes long");
+      // }
     },
   );
   final phoneTransformer = StreamTransformer<String, int>.fromHandlers(
     handleData: (phone, sink) {
-      if (phone.length < 10) {
+      if ((phone.length < 10) || (phone.length == 0)) {
         sink.addError("Phone number must be of 10 digits");
+      } else if (phone.contains(" ")) {
+        sink.addError("Phone number shouldnot contain space");
       } else {
         sink.add(int.parse(phone));
       }
