@@ -55,7 +55,7 @@ class FormBloc with ValidationMixin {
   void afterSubmit() {
     String email = _emailController.value;
     String phone = _phoneController.value;
-    print("Email address $email and password is $phone");
+    print("Email address $email and phone is $phone");
 
     Fluttertoast.showToast(
       msg: "Your form has been received!",
