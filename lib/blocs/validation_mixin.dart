@@ -40,12 +40,12 @@ class ValidationMixin {
   );
   final nameTransformer = StreamTransformer<String, String>.fromHandlers(
     handleData: (name, sink) {
-      if (isNumeric(name)) {
+      if (name.contains(RegExp(r'[0-9]'))) {
         sink.addError("Numeric value is not allowed in the name field");
       } else {
         sink.add(name);
       }
-      // if (name.length > 4) {
+      // if (name.length > 4) { || isNumeric(name)
       //   sink.add(name);
       // } else {
       //   sink.addError("Name must be at least 5 charactes long");
